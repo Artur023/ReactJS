@@ -1,0 +1,35 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+
+}
+
+.dialogsItems {
+    padding: 10px;
+
+}
+
+.dialogsItems .active {
+    color: gold;
+}
+
+.dialog a {
+    text-decoration: none;
+    color: white;
+}
+
+.messages {
+    padding: 10px;
+
+}
+
+.messages .message {
+
+}
+
+.avatar img {
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+
+}

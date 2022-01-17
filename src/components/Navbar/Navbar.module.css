@@ -1,0 +1,26 @@
+.nav {
+    grid-area: n;
+    background-color: dodgerblue;
+    padding: 20px;
+}
+
+.item a{
+    color: white;
+    text-decoration: none;
+}
+
+.item a.active {
+    color: gold;
+}
+
+.item.friends {
+    margin-top: 20px;
+    display: flex;
+
+}
+
+.bestFriends img {
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+}
