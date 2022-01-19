@@ -13,7 +13,8 @@ let store = {
         postsPage: {
             posts: [{id: 1, message: 'Hi, how are you?', likesCount: '15'}, {
                 id: 2, message: 'Hello, go to cs', likesCount: '20'
-            },], newPostText: ""
+            },],
+            newPostText: ""
         },
         navBar: {
             tops: [{topic: "Profile", to: "/profile"}, {topic: "Messages", to: "/dialogs"}, {
