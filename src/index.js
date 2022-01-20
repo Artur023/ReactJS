@@ -10,10 +10,7 @@ let renderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
             <App
-                dialogsPage={state.dialogPage}
-                posts={state.postPage}
-                navBar={state.navBar}
-                dispatch={store.dispatch.bind(store)}
+                store={store}
             />
         </React.StrictMode>,
         document.getElementById('root')

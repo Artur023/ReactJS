@@ -4,8 +4,8 @@ import dialogsReducer from "./dialogsReducer";
 import navbarReducer from "./navbarReducer";
 
 let reducers = combineReducers({
-    postPage: profileReducer,
-    dialogPage: dialogsReducer,
+    postsPage: profileReducer,
+    dialogsPage: dialogsReducer,
     navBar: navbarReducer
 })
 

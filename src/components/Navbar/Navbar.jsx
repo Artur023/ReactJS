@@ -1,11 +1,8 @@
 import React from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-import Post from "../Profile/MyPosts/Post/Post";
-
 
 const Navbar = (props) => {
-
     let topicItem =
         props.tops.map(t =>
             <div className={s.item}>

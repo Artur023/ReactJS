@@ -19,9 +19,7 @@ let store = {
         navBar: {
             tops: [{topic: "Profile", to: "/profile"}, {topic: "Messages", to: "/dialogs"}, {
                 topic: "News", to: "/news"
-            }, {topic: "Music", to: "/music"}, {topic: "Settings", to: "/settings"},
-
-            ]
+            }, {topic: "Music", to: "/music"}, {topic: "Settings", to: "/settings"}]
         }
 
     }, _callSubscriber() {
