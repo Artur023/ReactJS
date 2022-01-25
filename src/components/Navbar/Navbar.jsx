@@ -7,7 +7,7 @@ const Navbar = (props) => {
         props.tops.map(t =>
             <div className={s.item}>
                 <NavLink to={t.to}
-                         className={navData => navData.isActive ? s.active : s.item}>{t.topic}</NavLink>
+                         className={navData => navData.isActive ? s.active : s.item}>{t.topic} </NavLink>
             </div>)
 
     return (
