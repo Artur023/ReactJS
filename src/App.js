@@ -9,6 +9,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
 import DialogsConteiner from "./components/Dialogs/DialogsConteiner";
+import UsersConteiner from "./components/Users/UsersConteiner";
 
 const App = (props) => {
 
@@ -19,13 +20,14 @@ const App = (props) => {
                 <Navbar tops={props.store.getState().navBar.tops}/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/profile' element={<Profile store={props.store} />}/>
+                        <Route path='/profile' element={<Profile store={props.store}/>}/>
                         <Route path='/dialogs'
-                               element={<DialogsConteiner store={props.store} />}/>
-                        <Route path='/news*' element={<News/>}/>
-                        <Route path='/music*' element={<Music/>}/>
-                        <Route path='/settings*' element={<Settings/>}/>
-                        <Route path='/friends*' element={<Friends/>}/>
+                               element={<DialogsConteiner store={props.store}/>}/>
+                        <Route path='/news' element={<News/>}/>
+                        <Route path='/music' element={<Music/>}/>
+                        <Route path='/settings' element={<Settings/>}/>
+                        <Route path='/users' element={<UsersConteiner/>}/>
+                        <Route path='/friends' element={<Friends/>}/>
                     </Routes>
                 </div>
             </div>

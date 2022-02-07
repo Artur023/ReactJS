@@ -1,26 +1,40 @@
 import React from "react";
-import {addMessageActionCreator, updateNewMessageText} from "../../redux/dialogsReducer";
-import Dialogs from "./Dialogs";
+import Users from "./Users";
 import {connect} from "react-redux";
+import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC} from "../../redux/usersReducer";
 
 let mapStateToProps = (state) => {
+
     return {
-        dialog: state.dialogsPage.dialog,
-        message: state.dialogsPage.message,
-        newMessage: state.dialogsPage.newMessage
+        users: state.usersPage.users,
+        pageSize: state.usersPage.pageSize,
+        totalUsersCount: state.usersPage.totalUsersCount,
+        currentPage:state.usersPage.currentPage
     }
 }
 let mapDispatchToProps = (dispatch) => {
+
     return {
-        addMessageActionCreator: () => {
-            dispatch(addMessageActionCreator());
+        follow: (userId) => {
+            dispatch(followAC(userId));
         },
-        updateNewMessageText: (text) => {
-            dispatch(updateNewMessageText(text));
+        unfollow: (userId) => {
+            dispatch(unfollowAC(userId));
+        },
+        setUsers: (users) => {
+            dispatch(setUsersAC(users));
+        },
+        setCurrentPage: (pageNumber) => {
+            dispatch(setCurrentPageAC(pageNumber));
+        },
+        setTotalUsersCount: (totalCount) => {
+            dispatch(setTotalUsersCountAC(totalCount));
         }
     }
 }
 
-const DialogsConteiner = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+const UsersConteiner = connect(mapStateToProps, mapDispatchToProps)(Users);
 
-export default DialogsConteiner;
+export default UsersConteiner;
+
+

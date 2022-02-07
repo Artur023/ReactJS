@@ -1,32 +1,66 @@
-const ADD_MESSAGE = "ADD-MESSAGE";
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
-
-export let addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export let updateNewMessageText = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text});
+const FOLLOW = "FOLLOW";
+const UNFOLLOW = "UNFOLLOW";
+const SET_USERS = "SET_USERS";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
 
 let initialState = {
-    dialog: [{id: 1, name: 'Arthur'}, {id: 2, name: 'Alan'}, {id: 3, name: 'Alex'}],
-    message: [{id: 1, message: 'Hello'}, {id: 2, message: 'Yo'}, {id: 3, message: 'Чё как?'}],
-    newMessage: ""
+    users: [],
+    totalUsersCount: 0,
+    pageSize: 100,
+    currentPage: 3
 };
 
-const dialogsReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_MESSAGE:
+        case FOLLOW:
             return {
                 ...state,
-                message: [...state.message, {id: 5, message: state.newMessage}],
-                newMessage: ""
-            };
-        case UPDATE_NEW_MESSAGE_TEXT:
+                users: state.users.map(u => {
+                    if (u.id === action.userId) {
+                        return {...u, followed: true}
+                    }
+                    return u;
+                })
+            }
+        case UNFOLLOW:
             return {
                 ...state,
-                newMessage: action.newText
-            };
+                users: state.users.map(u => {
+                    if (u.id === action.userId) {
+                        return {...u, followed: false}
+                    }
+                    return u;
+                })
+            }
+        case SET_USERS:
+            return {
+                ...state, users: action.users
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state, currentPage: action.currentPage
+            }
+        case SET_TOTAL_COUNT:
+            return {
+                ...state, totalUsersCount: action.count
+            }
         default :
             return state;
     }
 };
 
-export default dialogsReducer;
+export const followAC = (userId) => ({type: FOLLOW, userId});
+export const unfollowAC = (userId) => ({type: UNFOLLOW, userId});
+export const setUsersAC = (users) => ({type: SET_USERS, users});
+export const setCurrentPageAC = (currentPage) => ({
+    type: SET_CURRENT_PAGE,
+    currentPage
+});
+export const setTotalUsersCountAC = (count) => ({
+    type: SET_TOTAL_COUNT,
+    count
+});
+
+export default usersReducer;

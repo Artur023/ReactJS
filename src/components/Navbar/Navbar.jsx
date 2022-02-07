@@ -3,6 +3,7 @@ import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 
 const Navbar = (props) => {
+
     let topicItem =
         props.tops.map(t =>
             <div className={s.item}>
