@@ -1,6 +1,7 @@
-import React from "react";
+import React from 'react';
 import s from './../Dialogs.module.css'
-import {NavLink} from "react-router-dom";
+import {NavLink} from 'react-router-dom';
+import UsersImage from '../../../assets/images/user.png'
 
 
 const DialogsItem = (props) => {
@@ -8,7 +9,7 @@ const DialogsItem = (props) => {
     return (<div className={s.dialog + ' ' + s.active}>
 
         <div className={s.avatar}>
-            <img src='https://pixelbox.ru/wp-content/uploads/2018/02/tumblr_okgix22aav1rpwm80o1_250.png'/>
+            <img src={UsersImage}/>
         </div>
         <NavLink to={path}
                  className={isActive => isActive.isActive ? s.active : s.item}> {props.name} </NavLink>

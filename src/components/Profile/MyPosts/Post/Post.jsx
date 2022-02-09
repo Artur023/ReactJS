@@ -1,11 +1,12 @@
 import React from 'react';
 import s from './Post.module.css'
+import UsersImage from '../../../../assets/images/user.png'
 
 const Post = (props) => {
 
   return (
     <div className={s.item}>
-      <img alt='avatar' src='https://whatsism.com/uploads/posts/2018-07/1530546770_rmk_vdjbx10.jpg' />
+      <img alt='avatar' src={UsersImage} />
       {props.message}
       <div>
         <span>like</span> {props.likesCount}

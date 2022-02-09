@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -10,6 +9,7 @@ import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
 import DialogsConteiner from "./components/Dialogs/DialogsConteiner";
 import UsersConteiner from "./components/Users/UsersConteiner";
+import ProfileConteiner from "./components/Profile/ProfileConteiner";
 
 const App = (props) => {
 
@@ -20,7 +20,7 @@ const App = (props) => {
                 <Navbar tops={props.store.getState().navBar.tops}/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/profile' element={<Profile store={props.store}/>}/>
+                        <Route path='/profile/*' element={<ProfileConteiner store={props.store}/>}/>
                         <Route path='/dialogs'
                                element={<DialogsConteiner store={props.store}/>}/>
                         <Route path='/news' element={<News/>}/>
