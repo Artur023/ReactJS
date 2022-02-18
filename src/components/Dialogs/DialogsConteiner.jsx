@@ -4,10 +4,12 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
+
     return {
         dialog: state.dialogsPage.dialog,
         message: state.dialogsPage.message,
-        newMessage: state.dialogsPage.newMessage
+        newMessage: state.dialogsPage.newMessage,
+        isAuth: state.auth.isAuth
     }
 }
 export default connect(mapStateToProps, {addMessage, updateNewMessage})(Dialogs);
