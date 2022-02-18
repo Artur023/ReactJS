@@ -1,28 +1,30 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
-import DialogsConteiner from "./components/Dialogs/DialogsConteiner";
+import DialogsContainer from "./components/Dialogs/DialogsConteiner";
 import UsersConteiner from "./components/Users/UsersConteiner";
 import ProfileConteiner from "./components/Profile/ProfileConteiner";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = (props) => {
 
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
-                <Header/>
+                <HeaderContainer/>
                 <Navbar tops={props.store.getState().navBar.tops}/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/profile/*' element={<ProfileConteiner store={props.store}/>}/>
+                        <Route path='/profile/' element={<ProfileConteiner store={props.store}/>}>
+                            <Route path=':userId' element={<ProfileConteiner store={props.store}/>}/>
+                        </Route>
                         <Route path='/dialogs'
-                               element={<DialogsConteiner store={props.store}/>}/>
+                               element={<DialogsContainer store={props.store}/>}/>
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>

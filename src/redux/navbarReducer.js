@@ -8,9 +8,7 @@ let initialState = {
         {topic: "Users", to: "/users"}
     ]
 };
-
 const navbarReducer = (state = initialState, action) => {
-
 
     return state;
 }

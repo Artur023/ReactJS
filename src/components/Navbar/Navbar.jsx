@@ -10,7 +10,6 @@ const Navbar = (props) => {
                 <NavLink to={t.to}
                          className={navData => navData.isActive ? s.active : s.item}>{t.topic} </NavLink>
             </div>)
-
     return (
         <nav className={s.nav}>
             {topicItem}
@@ -28,8 +27,6 @@ const Navbar = (props) => {
                     <img src='https://cs4.pikabu.ru/post_img/2014/05/05/10/1399307834_282679763.gif'/>
                 </div>
             </div>
-
-
             {/*<div className={s.item}>
                 <NavLink to='/dialogs' className={navData => navData.isActive ? s.active : s.item}>Messages</NavLink>
             </div>
@@ -45,7 +42,6 @@ const Navbar = (props) => {
             <div className={s.item + ' ' + s.friends}>
                 <NavLink to='/friends' className={navData => navData.isActive ? s.active : s.item}>Friends</NavLink>
             </div>*/}
-
         </nav>
     );
 };
