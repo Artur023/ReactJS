@@ -3,6 +3,8 @@ import s from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import profileInfo from './../../../assets/images/profileInfo.jpeg'
 import {NavLink} from "react-router-dom";
+import pageUser from "../../../assets/images/user.png"
+import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
 
@@ -16,7 +18,13 @@ const ProfileInfo = (props) => {
                      src={profileInfo}/>
             </div>
             <div className={s.descriptionBlock}>
-                <img src={props.profile.photos.large}/>
+                <div>
+                    {props.profile.photos.large
+                        ? <img src={props.profile.photos.large}/>
+                        : <img src={pageUser}/>
+                    }
+                    <ProfileStatus status={"My status"}/>
+                </div>
                 <div>
                     {props.profile.fullName}
                 </div>
