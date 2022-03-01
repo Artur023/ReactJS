@@ -9,6 +9,6 @@ let mapStateToProps = (state) => {
         newPostText: state.postsPage.newPostText
     }
 }
-const MyPostsConteiner = connect(mapStateToProps, {updateNewPostText,addPost})(MyPosts)
+const MyPostsConteiner = connect(mapStateToProps, {updateNewPostText, addPost})(MyPosts)
 
 export default MyPostsConteiner;

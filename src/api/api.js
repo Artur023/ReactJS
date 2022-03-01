@@ -40,5 +40,9 @@ export const authAPI = {
     me() {
         return instance.get(`auth/me`)
             .then(response => response.data)
+    },
+    login(formData) {
+        return instance.post(`auth/login`, formData)
+            .then(response => response)
     }
 }
