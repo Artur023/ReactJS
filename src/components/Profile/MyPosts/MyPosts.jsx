@@ -37,7 +37,6 @@ const MyPostsForm = props => {
                    validate={[required, maxLength10]}
             />
         </div>
-
         <div>
             <button>Add post</button>
         </div>

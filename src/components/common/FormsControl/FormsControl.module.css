@@ -8,3 +8,9 @@
 {
     color: darkred;
 }
+
+.errorForm {
+    color: darkred;
+    border: darkred 1px solid;
+    padding: 5px;
+}

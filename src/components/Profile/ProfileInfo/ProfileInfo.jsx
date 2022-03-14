@@ -5,6 +5,7 @@ import profileInfo from './../../../assets/images/profileInfo.jpeg'
 import {NavLink} from "react-router-dom";
 import pageUser from "../../../assets/images/user.png"
 import ProfileStatus from './ProfileStatus'
+import ProfileStatusWithHook from "./ProfileStatusWhisHooks";
 
 const ProfileInfo = (props) => {
 
@@ -23,7 +24,7 @@ const ProfileInfo = (props) => {
                         ? <img src={props.profile.photos.large}/>
                         : <img src={pageUser}/>
                     }
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                    <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus}/>
                 </div>
                 <div>
                     {props.profile.fullName}

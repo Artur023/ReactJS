@@ -1,13 +1,10 @@
 import React from 'react';
 
-
 class ProfileStatus extends React.Component {
-
     state = {
         editMode: false,
         status: this.props.status
     }
-
     activateEditMode = () => {
         this.setState({
             editMode: true
@@ -39,8 +36,7 @@ class ProfileStatus extends React.Component {
         return <div>
             {!this.state.editMode &&
                 <div>
-                    <span
-                        onDoubleClick={this.activateEditMode}>{this.props.status || "no status"}</span>
+                    <span onDoubleClick={this.activateEditMode}>{this.props.status || "no status"}</span>
                 </div>
             }
             {this.state.editMode &&
@@ -53,6 +49,5 @@ class ProfileStatus extends React.Component {
 
     };
 }
-
 
 export default ProfileStatus;
