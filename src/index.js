@@ -17,6 +17,8 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
+
+
 /*renderEntireTree(store.getState());
 
 store.subscribe(() => {

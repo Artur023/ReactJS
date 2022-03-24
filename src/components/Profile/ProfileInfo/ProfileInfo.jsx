@@ -4,15 +4,12 @@ import Preloader from "../../common/Preloader/Preloader";
 import profileInfo from './../../../assets/images/profileInfo.jpeg'
 import {NavLink} from "react-router-dom";
 import pageUser from "../../../assets/images/user.png"
-import ProfileStatus from './ProfileStatus'
 import ProfileStatusWithHook from "./ProfileStatusWhisHooks";
 
 const ProfileInfo = (props) => {
-
     if (!props.profile) {
         return <Preloader/>
     }
-
     return (<div>
             <div className={s.pictureInfo}>
                 <img alt='фон'

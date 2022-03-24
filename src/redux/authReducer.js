@@ -38,14 +38,9 @@ export const getAuthUserData = () => (dispatch) => {
 }
 
 export const login = (email, password, rememberMe, isAuth) => (dispatch) => {
-
     authAPI.login(email, password, rememberMe, isAuth)
         .then(data => {
-
-            let messages = data.data.messages.length > 0
-                ? data.data.messages[0]
-                : "Some error"
-
+            let messages = data.data.messages.length > 0 ? data.data.messages[0] : "Some error"
             if (data.data.resultCode === 0) {
                 dispatch(getAuthUserData())
             } else {
