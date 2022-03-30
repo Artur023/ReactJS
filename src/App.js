@@ -20,7 +20,6 @@ class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp()
     }
-
     render() {
 
         if (!this.props.initialized) {

@@ -7,13 +7,12 @@ import {login, logout} from "../../redux/authReducer";
 import {Navigate} from "react-router-dom";
 import s from "./../common/FormsControl/FormsControl.module.css"
 
-const LoginForm = props => {
-    return <form onSubmit={props.handleSubmit}>
+const LoginForm = ({handleSubmit, error}) => {
+    return <form onSubmit={handleSubmit}>
         <div><Field name={"email"} component={Input} placeholder={"Email"} validate={[required]}/></div>
-        <div><Field name={"password"} component={Input} placeholder={"Password"} type={"password"}
-                    validate={[required]}/></div>
+        <div><Field name={"password"} component={Input} placeholder={"Password"} type={"password"} validate={[required]}/></div>
         <div><Field name={"rememberMe"} component={Input} type={"checkbox"}/>rememberMe</div>
-        {props.error && <div className={s.errorForm}>{props.error}</div>}
+        {error && <div className={s.errorForm}>{error}</div>}
         <div>
             <button type={"submit"}>Login</button>
         </div>
