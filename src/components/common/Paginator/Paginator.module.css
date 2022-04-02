@@ -1,4 +1,23 @@
 .selectedPage {
     font-weight: bold;
-    color: darkred;
+    color: green;
+    border: 3px solid;
+    border-radius: 3px;
+}
+.noSelectedPage {
+    border: 1px solid;
+    color: darkgreen;
+    border-radius: 3px;
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 5px;
+
 }

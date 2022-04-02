@@ -12,8 +12,8 @@ const ProfileInfo = (props) => {
     }
     return (<div>
             <div className={s.pictureInfo}>
-                <img alt='фон'
-                     src={profileInfo}/>
+                {/*<img alt='фон'*/}
+                {/*     src={profileInfo}/>*/}
             </div>
             <div className={s.descriptionBlock}>
                 <div>
