@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
-import profileInfo from './../../../assets/images/profileInfo.jpeg'
 import {NavLink} from "react-router-dom";
 import pageUser from "../../../assets/images/user.png"
 import ProfileStatusWithHook from "./ProfileStatusWhisHooks";
@@ -10,17 +9,26 @@ const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader/>
     }
+
+    let onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            props.savePhoto(e.target.files[0])
+        }
+    }
+
     return (<div>
             <div className={s.pictureInfo}>
-                {/*<img alt='фон'*/}
-                {/*     src={profileInfo}/>*/}
             </div>
             <div className={s.descriptionBlock}>
                 <div>
                     {props.profile.photos.large
                         ? <img src={props.profile.photos.large}/>
                         : <img src={pageUser}/>
-                    }
+                    } <span>
+                    {props.isOwner && <input className={s.button} type={"file"} onChange={onMainPhotoSelected}/>}
+
+                </span>
+
                     <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus}/>
                 </div>
                 <div>

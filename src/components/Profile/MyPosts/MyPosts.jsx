@@ -23,13 +23,13 @@ const MyPosts = (props) => {
     </div>
 };
 const MyPostsForm = props => {
-    return <form onSubmit={props.handleSubmit}>
+    return <form className={s.button} onSubmit={props.handleSubmit}>
         <div>
             <Field name="newMyPost" component={Textarea} placeholder="Enter your post"
                    validate={[required, maxLength10]}/>
         </div>
         <div>
-            <button>Add post</button>
+            <button >Add post</button>
         </div>
     </form>
 }

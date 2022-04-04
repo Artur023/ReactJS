@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {HashRouter, Routes, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -15,28 +15,32 @@ import {connect} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
 
+// const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsConteiner'));
+// const ProfileConteiner = React.lazy(() => import('./components/Profile/ProfileConteiner'));
+
 class App extends React.Component {
 
     componentDidMount() {
         this.props.initializeApp()
     }
+
     render() {
 
         if (!this.props.initialized) {
             return <Preloader/>
         }
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <div className='app-wrapper'>
                     <HeaderContainer/>
                     <Navbar tops={this.props.store.getState().navBar.tops}/>
                     <div className='app-wrapper-content'>
                         <Routes>
-                            <Route path='/profile/' element={<ProfileConteiner store={this.props.store}/>}>
-                                <Route path=':userId' element={<ProfileConteiner store={this.props.store}/>}/>
+                            <Route path='/profile/' element={<ProfileConteiner/>}>
+                                <Route path=':userId' element={<ProfileConteiner/>}/>
                             </Route>
                             <Route path='/dialogs'
-                                   element={<DialogsContainer store={this.props.store}/>}/>
+                                   element={<DialogsContainer/>}/>
                             <Route path='/news' element={<News/>}/>
                             <Route path='/music' element={<Music/>}/>
                             <Route path='/settings' element={<Settings/>}/>
@@ -46,10 +50,11 @@ class App extends React.Component {
                         </Routes>
                     </div>
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         );
     }
 }
+
 const mapStateToProps = state => ({
     initialized: state.app.initialized
 })
