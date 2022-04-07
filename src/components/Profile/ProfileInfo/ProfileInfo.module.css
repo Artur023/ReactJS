@@ -1,10 +1,12 @@
 .descriptionBlock {
     padding: 10px;
 }
+
 .pictureInfo img {
     padding: 5px;
     width: 1000px;
 }
+
 .button {
     background-color: #4caf50; /* Green */
     border: none;
@@ -15,4 +17,14 @@
     font-size: 12px;
     border-radius: 5px;
 
+}
+
+.status {
+    color: green;
+}
+.skills{
+    color: green;
+}
+.contacts{
+    margin-left: 10px;
 }

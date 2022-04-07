@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
-import {NavLink} from "react-router-dom";
 import pageUser from "../../../assets/images/user.png"
 import ProfileStatusWithHook from "./ProfileStatusWhisHooks";
+import {Link, NavLink} from "react-router-dom";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -26,28 +26,41 @@ const ProfileInfo = (props) => {
                         : <img src={pageUser}/>
                     } <span>
                     {props.isOwner && <input className={s.button} type={"file"} onChange={onMainPhotoSelected}/>}
-
                 </span>
-
                     <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus}/>
                 </div>
                 <div>
-                    {props.profile.fullName}
+                    <b>Full name:</b> {props.profile.fullName}
                 </div>
                 <div>
-                    {props.profile.aboutMe}
+                    <b>About me:</b> {props.profile.aboutMe}
                 </div>
                 <div>
-                    <div><NavLink to={'/news'}> {props.profile.contacts.facebook}</NavLink></div>
-                    <div><NavLink to={'/news'}> {props.profile.contacts.vk}</NavLink></div>
-                    <div><NavLink to={'/news'}> {props.profile.contacts.github}</NavLink></div>
+                    <b>looking for a job:</b> {props.profile.lookingForAJob ? "yes" : "no"}
                 </div>
+                {props.profile.lookingForAJob &&
+                    <div>
+                        <b>My skills:</b> <i className={s.skills}>{props.profile.lookingForAJobDescription}</i>
+                    </div>
+                }
                 <div>
-                    lookingForAJob: {props.profile.lookingForAJob.toString()}
+                    <b>Contacts:</b> {Object.keys(props.profile.contacts)
+                    .map(key => {
+                            return <Contact contactTitle={key} contactValue={props.profile.contacts[key]}/>
+                        }
+                    )}
                 </div>
             </div>
         </div>
     );
 };
+
+const Contact = ({contactTitle, contactValue}) => {
+    return <div className={s.contacts}>
+        <b>{contactTitle}</b>: {contactValue
+        ? <a href={contactValue} >{contactValue}</a>
+        : "no contact"}
+    </div>
+}
 
 export default ProfileInfo;
