@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import pageUser from "../../../assets/images/user.png"
 import ProfileStatusWithHook from "./ProfileStatusWhisHooks";
-import {Link, NavLink} from "react-router-dom";
+import ProfileData from "./ProfileData/ProfileData";
+import ProfileDataForm from "./ProfileDataForm/ProfileDataForm";
 
 const ProfileInfo = (props) => {
+    let [editMode, setEditMode] = useState(false)
+
+    let activateEditMode = () => {
+        setEditMode(true)
+    }
+    let deActivateEditMode = () => {
+        setEditMode(false)
+    }
+
     if (!props.profile) {
         return <Preloader/>
     }
@@ -14,52 +24,28 @@ const ProfileInfo = (props) => {
         if (e.target.files.length) {
             props.savePhoto(e.target.files[0])
         }
+    };
+
+    let onSubmit =(dataForm) => {
+        props.saveProfile(dataForm)
+        deActivateEditMode()
     }
 
-    return (<div>
-            <div className={s.pictureInfo}>
-            </div>
-            <div className={s.descriptionBlock}>
-                <div>
-                    {props.profile.photos.large
-                        ? <img src={props.profile.photos.large}/>
-                        : <img src={pageUser}/>
-                    } <span>
+    return <div>
+        <div>
+            {props.profile.photos.large
+                ? <img src={props.profile.photos.large}/>
+                : <img src={pageUser}/>
+            }<span>
                     {props.isOwner && <input className={s.button} type={"file"} onChange={onMainPhotoSelected}/>}
                 </span>
-                    <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus}/>
-                </div>
-                <div>
-                    <b>Full name:</b> {props.profile.fullName}
-                </div>
-                <div>
-                    <b>About me:</b> {props.profile.aboutMe}
-                </div>
-                <div>
-                    <b>looking for a job:</b> {props.profile.lookingForAJob ? "yes" : "no"}
-                </div>
-                {props.profile.lookingForAJob &&
-                    <div>
-                        <b>My skills:</b> <i className={s.skills}>{props.profile.lookingForAJobDescription}</i>
-                    </div>
-                }
-                <div>
-                    <b>Contacts:</b> {Object.keys(props.profile.contacts)
-                    .map(key => {
-                            return <Contact contactTitle={key} contactValue={props.profile.contacts[key]}/>
-                        }
-                    )}
-                </div>
-            </div>
+            <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus}/>
         </div>
-    );
-};
-
-const Contact = ({contactTitle, contactValue}) => {
-    return <div className={s.contacts}>
-        <b>{contactTitle}</b>: {contactValue
-        ? <a href={contactValue} >{contactValue}</a>
-        : "no contact"}
+        {props.isOwner &&
+            <button className={s.button} onClick={activateEditMode} onDoubleClick={deActivateEditMode}>Edit</button>}
+        {editMode
+            ? <ProfileDataForm {...props} initialValues={props.profile} onSubmit={onSubmit} />
+            : <ProfileData {...props}/>}
     </div>
 }
 

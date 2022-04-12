@@ -38,6 +38,10 @@ export const profileAPI = {
         formData.append("image", photoFile)
         return instance.put(`profile/photo`, formData)
             .then(response => response.data)
+    },
+    saveProfile(profile) {
+        return instance.put(`profile`, profile)
+            .then(response => response.data)
     }
 }
 export const authAPI = {
