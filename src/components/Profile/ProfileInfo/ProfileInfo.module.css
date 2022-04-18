@@ -22,9 +22,21 @@
 .status {
     color: green;
 }
-.skills{
+
+.skills {
     color: green;
 }
-.contacts{
+
+.contacts {
     margin-left: 10px;
+}
+
+.avatar img{
+    border-radius: 10px;
+    height: 150px;
+    width: 150px;
+}
+.buttonAvatar{
+    position: relative;
+    margin-left: 150px;
 }

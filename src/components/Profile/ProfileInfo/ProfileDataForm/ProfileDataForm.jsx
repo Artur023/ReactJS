@@ -6,7 +6,6 @@ import s from "../../../common/FormsControl/FormsControl.module.css";
 import {Contact, Contacts} from "../ProfileData/ProfileData";
 
 function ProfileDataForm(props) {
-    debugger;
     return <form onSubmit={props.handleSubmit}>
         <button>save</button>
         {props.error && <div className={s.errorForm}>{props.error}</div>}

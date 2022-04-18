@@ -94,7 +94,9 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
     if (response.resultCode === 0) {
         dispatch(getProfileUser(userId));
     } else {
-        dispatch(stopSubmit("profileData", {_error: response.messages[0]}))
+        dispatch(stopSubmit("profileData", {_error: response.messages}))
+        // dispatch(stopSubmit("profileData", {"contacts": {"facebook": response.messages[0]}}))
+        return Promise.reject(response.messages[1])
     }
 }
 export default profileReducer;

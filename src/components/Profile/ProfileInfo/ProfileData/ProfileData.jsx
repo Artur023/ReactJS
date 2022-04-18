@@ -23,7 +23,7 @@ function ProfileData(props) {
             <div>
                 <b>Contacts:</b> {Object.keys(props.profile.contacts)
                 .map(key => {
-                        return <Contact contactTitle={key} contactValue={props.profile.contacts[key]}/>
+                        return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>
                     }
                 )}
             </div>

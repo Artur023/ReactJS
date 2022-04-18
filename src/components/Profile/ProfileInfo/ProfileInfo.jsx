@@ -26,25 +26,31 @@ const ProfileInfo = (props) => {
         }
     };
 
-    let onSubmit =(dataForm) => {
-        props.saveProfile(dataForm)
-        deActivateEditMode()
+    let onSubmit = (dataForm) => {
+        let promise = props.saveProfile(dataForm)
+        promise
+            .then(
+                deActivateEditMode
+            )
     }
 
     return <div>
         <div>
-            {props.profile.photos.large
-                ? <img src={props.profile.photos.large}/>
-                : <img src={pageUser}/>
-            }<span>
+            <div className={s.avatar}>
+                {props.profile.photos.large
+                    ? <img src={props.profile.photos.large}/>
+                    : <img src={pageUser}/>
+                }
+            </div>
+            <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus}/>
+            <span className={s.buttonAvatar}>
                     {props.isOwner && <input className={s.button} type={"file"} onChange={onMainPhotoSelected}/>}
                 </span>
-            <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus}/>
         </div>
         {props.isOwner &&
             <button className={s.button} onClick={activateEditMode} onDoubleClick={deActivateEditMode}>Edit</button>}
         {editMode
-            ? <ProfileDataForm {...props} initialValues={props.profile} onSubmit={onSubmit} />
+            ? <ProfileDataForm {...props} initialValues={props.profile} onSubmit={onSubmit}/>
             : <ProfileData {...props}/>}
     </div>
 }
