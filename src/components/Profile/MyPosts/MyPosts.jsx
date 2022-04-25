@@ -30,6 +30,9 @@ const MyPostsForm = props => {
         </div>
         <div>
             <button >Add post</button>
+            <button type="button" disabled={props.pristine || props.submitting} onClick={props.reset}>
+                Clear Values
+            </button>
         </div>
     </form>
 }

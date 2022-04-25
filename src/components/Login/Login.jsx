@@ -46,6 +46,5 @@ const Login = props => {
 
 }
 
-
 const mapStateToProps = state => ({isAuth: state.auth.isAuth, captcha: state.auth.captchaUrl})
 export default connect(mapStateToProps, {logout, login, getCaptchaUrl})(Login);

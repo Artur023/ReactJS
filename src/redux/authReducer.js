@@ -1,6 +1,5 @@
 import {authAPI, securityAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
-import Preloader from "../components/common/Preloader/Preloader";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'GET_CAPTCHA_URL_SUCCESS'

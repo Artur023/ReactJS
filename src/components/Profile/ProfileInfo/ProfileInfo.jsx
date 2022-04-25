@@ -42,7 +42,7 @@ const ProfileInfo = (props) => {
                     : <img src={pageUser}/>
                 }
             </div>
-            <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus}/>
+            <ProfileStatusWithHook isOwner={props.isOwner} status={props.status} updateStatus={props.updateStatus}/>
             <span className={s.buttonAvatar}>
                     {props.isOwner && <input className={s.button} type={"file"} onChange={onMainPhotoSelected}/>}
                 </span>
