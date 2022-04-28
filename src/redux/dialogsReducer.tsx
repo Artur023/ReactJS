@@ -1,8 +1,25 @@
 const ADD_MESSAGE = "ADD-MESSAGE";
 
-export const addMessage = (newMessage) => ({type: ADD_MESSAGE, newMessage});
 
-let initialState = {
+type AddMessageActionCreator = {
+    type: typeof ADD_MESSAGE
+    newMessage
+}
+export const addMessage = (newMessage: string): AddMessageActionCreator => ({type: ADD_MESSAGE, newMessage});
+type DialogType = {
+    id: number | null
+    name: string | null
+}
+type MessageType = {
+    id: number | null
+    message: string | null
+}
+type InitialStateType = {
+    dialog: Array<DialogType>
+    message: Array<MessageType>
+}
+
+let initialState: InitialStateType = {
     dialog: [{id: 1, name: 'Arthur'}, {id: 2, name: 'Alan'}, {id: 3, name: 'Alex'}],
     message: [{id: 1, message: 'Hello'}, {id: 2, message: 'Yo'}, {id: 3, message: 'Чё как?'}],
 };

@@ -12,7 +12,7 @@ import ProfileConteiner from "./components/Profile/ProfileConteiner";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
-import {initializeApp} from "./redux/appReducer";
+import {initializeApp} from "./redux/appReducer.tsx";
 import Preloader from "./components/common/Preloader/Preloader";
 import Page404 from "./components/common/Page404/Page404";
 
