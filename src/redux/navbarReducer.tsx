@@ -8,7 +8,9 @@ let initialState = {
         {topic: "Users", to: "/users"}
     ]
 };
-const navbarReducer = (state = initialState, action) => {
+type InitialStateType = typeof initialState
+
+const navbarReducer = (state = initialState, action): InitialStateType => {
     return state;
 }
 

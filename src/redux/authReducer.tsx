@@ -1,15 +1,9 @@
 import {authAPI, securityAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {PayloadType} from "../types/Types";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'GET_CAPTCHA_URL_SUCCESS'
-
-type PayloadType = {
-    id: number | null
-    email: string | null
-    login: string | null
-    isAuth: boolean | null
-}
 
 let initialState = {
     id: null as number,
@@ -21,7 +15,7 @@ let initialState = {
 
 type InitialStateType = typeof initialState
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action): InitialStateType => {
     switch (action.type) {
         case SET_USER_DATA:
         case GET_CAPTCHA_URL_SUCCESS:

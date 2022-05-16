@@ -1,6 +1,6 @@
 import {usersAPI} from "../api/api";
 import {objectHelpers} from "../utils/objectHelpers";
-import {PhotoType} from "./profileReducer";
+import {UsersType} from "../types/Types";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -28,13 +28,6 @@ let initialState: InitialStateType = {
     followingIsProgress: [],
 };
 
-type UsersType = {
-    id: number | null
-    name: string | null
-    status: string | null
-    PhotoType
-    followed: boolean
-}
 
 const usersReducer = (state = initialState, action) => {
 
@@ -71,7 +64,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 followingIsProgress: action.isFetching
                     ? [...state.followingIsProgress, action.userId]
-                    : [state.followingIsProgress.filter(id => id != action.userId)]
+                    : [state.followingIsProgress.filter(id => id !== action.userId)]
             }
         default :
             return state;
@@ -104,11 +97,11 @@ export const setCurrentPage = (currentPage: number): SetCurrentPageType => ({
     currentPage
 });
 
-type SetTotalUsersCounType = {
+type SetTotalUsersCountType = {
     type: typeof SET_TOTAL_COUNT
     count
 }
-export const setTotalUsersCount = (count: number): SetTotalUsersCounType => ({
+export const setTotalUsersCount = (count: number): SetTotalUsersCountType => ({
     type: SET_TOTAL_COUNT,
     count
 });
@@ -154,12 +147,12 @@ const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) =>
     dispatch(toggleIsProgressFollow(false, userId))
 }
 
-export const follow = (userId) => {
+export const follow = (userId: number) => {
     return async (dispatch) => {
         followUnfollowFlow(dispatch, userId, usersAPI.followUser.bind(usersAPI), followSuccess);
     }
 };
-export const unfollow = (userId) => {
+export const unfollow = (userId: number) => {
     return async (dispatch) => {
         followUnfollowFlow(dispatch, userId, usersAPI.unFollowUser.bind(usersAPI), unfollowSuccess);
     }

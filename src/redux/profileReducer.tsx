@@ -1,5 +1,6 @@
 import {profileAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {PhotoType, PostType, ProfileType} from "../types/Types";
 
 const ADD_POST = 'ADD-POST';
 const DELETE_POST = 'DELETE-POST';
@@ -12,20 +13,6 @@ type InitialStateType = {
     posts: Array<PostType> | null | any
     profile: ProfileType | null
     status: string | null
-}
-type PostType = {
-    id: number | null
-    message: string | null
-    likesCount: string | null
-}
-type ProfileType = {
-    id: number | null
-    message: string | null
-    likesCount: string | null
-}
-export type PhotoType = {
-    small: string
-    large: string
 }
 
 let initialState: InitialStateType = {
@@ -108,7 +95,10 @@ type SavePhotoSuccessActionCreator = {
     type: typeof SAVE_PHOTO_SUCCESS
     photos?: PhotoType
 }
-export let savePhotoSuccess = (photos): SavePhotoSuccessActionCreator => ({type: SAVE_PHOTO_SUCCESS, photos});
+export let savePhotoSuccess = (photos: PhotoType): SavePhotoSuccessActionCreator => ({
+    type: SAVE_PHOTO_SUCCESS,
+    photos
+});
 
 type SaveProfileSuccessActionCreator = {
     type: typeof SAVE_PROFILE_SUCCESS

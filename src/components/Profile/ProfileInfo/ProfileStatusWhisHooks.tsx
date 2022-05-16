@@ -1,5 +1,13 @@
 import React, {useEffect, useState} from 'react';
+// @ts-ignore
 import s from './ProfileInfo.module.css'
+
+type PropsType = {
+
+}
+type StateType = {
+
+}
 
 const ProfileStatusWithHook = props => {
     let [editMode, setEditMode] = useState(false)
