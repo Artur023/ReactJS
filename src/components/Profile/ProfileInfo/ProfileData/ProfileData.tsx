@@ -1,7 +1,13 @@
+// @ts-ignore
 import s from "../ProfileInfo.module.css";
-import React from "react";
+import React, {FC} from "react";
+import {ProfileType} from "../../../../types/Types";
 
-function ProfileData(props) {
+type PropsType = {
+    profile: ProfileType
+}
+
+const ProfileData: FC<PropsType> = (props) => {
     return <div>
         <div className={s.pictureInfo}>
         </div>

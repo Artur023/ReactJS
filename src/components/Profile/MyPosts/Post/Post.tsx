@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {FC} from 'react';
+// @ts-ignore
 import s from './Post.module.css'
+// @ts-ignore
 import UsersImage from "../../../../assets/images/user.png"
 
+type PropsType = {
+    message: string
+    likesCount: number
+}
 
-const Post = ({message, likesCount}) => {
+const Post: FC<PropsType> = ({message, likesCount}) => {
     return (
         <div className={s.item}>
             <img alt='avatar' src={UsersImage}/>

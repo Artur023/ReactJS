@@ -1,12 +1,26 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, FC, useState} from 'react';
+// @ts-ignore
 import s from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
+// @ts-ignore
 import pageUser from "../../../assets/images/user.png"
 import ProfileStatusWithHook from "./ProfileStatusWhisHooks";
 import ProfileData from "./ProfileData/ProfileData";
 import ProfileDataForm from "./ProfileDataForm/ProfileDataForm";
+import {ProfileType} from "../../../types/Types";
 
-const ProfileInfo = (props) => {
+
+type PropsType = {
+    status: string
+    savePhoto: (e:ChangeEvent<HTMLInputElement> ) => void
+    isOwner: any
+    saveProfile: (dataForm: any) => any
+    profile: ProfileType
+    updateStatus: () => void
+
+}
+
+const ProfileInfo: FC<PropsType> = (props) => {
     let [editMode, setEditMode] = useState(false)
 
     let activateEditMode = () => {
@@ -51,7 +65,7 @@ const ProfileInfo = (props) => {
             <button className={s.button} onClick={activateEditMode} onDoubleClick={deActivateEditMode}>Edit</button>}
         {editMode
             ? <ProfileDataForm {...props} initialValues={props.profile} onSubmit={onSubmit}/>
-            : <ProfileData {...props}/>}
+            : <ProfileData profile={props.profile}/>}
     </div>
 }
 

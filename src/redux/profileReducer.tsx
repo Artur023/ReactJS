@@ -13,6 +13,7 @@ type InitialStateType = {
     posts: Array<PostType> | null | any
     profile: ProfileType | null
     status: string | null
+    newPostText: string | null
 }
 
 let initialState: InitialStateType = {
@@ -21,6 +22,7 @@ let initialState: InitialStateType = {
         {id: 2, message: 'Hello, go to cs', likesCount: '20'},
     ],
     profile: null,
+    newPostText: '',
     status: ""
 };
 
