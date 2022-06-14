@@ -34,7 +34,7 @@ export type PhotoType = {
     large: string
 }
 
-type UserItemType = {
+export type UserItemType = {
     id: number | null
     name: string | null
     status: string | null
@@ -44,6 +44,7 @@ type UserItemType = {
 }
 
 export type UsersType = {
+    id: number | null
     items: Array<UserItemType>
     totalCount: number
     error: string

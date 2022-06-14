@@ -5,13 +5,13 @@ import User from "./User";
 // @ts-ignore
 import s from './Users.module.css'
 
-import {UsersType} from "../../types/Types";
+import {UserItemType, UsersType} from "../../types/Types";
 
 type PropsType = {
     totalUsersCount: number
     pageSize: number
     currentPage: number
-    users: Array<UsersType>
+    users: Array<UserItemType>
     followingIsProgress: Array<number>
     follow: (userId: number) => void
     unfollow: (userId: number) => void

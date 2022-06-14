@@ -7,6 +7,7 @@ import authReducer from "./authReducer";
 import thunk from "redux-thunk";
 import {reducer as formReducer} from 'redux-form';
 import appReducer from "./appReducer";
+import any = jasmine.any;
 
 let rootReducers = combineReducers({
     postsPage: profileReducer,
@@ -20,6 +21,9 @@ let rootReducers = combineReducers({
 
 type RootReducersType = typeof rootReducers
 export type AppStateType = ReturnType<RootReducersType>
+
+type PropertiesTypes<T> = T extends { [key: string]: infer U } ? U : never
+export type InferActionsTypes<T extends { [key: string]: (...args: any[]) => any }> = ReturnType<PropertiesTypes<T>>
 
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
