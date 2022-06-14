@@ -1,12 +1,12 @@
 import React from 'react';
-import {Field, reduxForm, reset} from "redux-form";
+import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../common/FormsControl/FormsControl";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
+// @ts-ignore
 import s from "../Profile/MyPosts/MyPosts.module.css";
 
 const maxLength50 = maxLengthCreator(50)
 const DialogsForm = (props) => {
-
     return <form className={s.button} onSubmit={props.handleSubmit}>
         <div>
             <Field name={"newMessage"}

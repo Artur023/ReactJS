@@ -3,7 +3,7 @@ import {Field, reduxForm} from "redux-form";
 import {Input, Textarea} from "../../../common/FormsControl/FormsControl";
 import {required} from "../../../../utils/validators/validators";
 import s from "../../../common/FormsControl/FormsControl.module.css";
-import {Contact, Contacts} from "../ProfileData/ProfileData";
+import {Contacts} from "../ProfileData/ProfileData";
 
 function ProfileDataForm(props) {
     return <form onSubmit={props.handleSubmit}>
