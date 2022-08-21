@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, {FC} from "react";
 import Profile from "./Profile";
 import {connect} from 'react-redux';
 import {useParams} from "react-router-dom";
@@ -82,7 +82,7 @@ let mapStateToProps = (state: AppStateType) => ({
 });
 
 export default compose(
-    connect<MapStateType, DispatchStateType, OwnStateType, AppStateType>(mapStateToProps, {
+    connect(mapStateToProps, {
         getProfileUser,
         getStatus,
         updateStatus,

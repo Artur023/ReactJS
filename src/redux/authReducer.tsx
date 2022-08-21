@@ -1,8 +1,10 @@
-import {authAPI, ResultCodeForCaptcha, ResultCodesEnum, securityAPI} from "../api/api";
+import {ResultCodeForCaptcha, ResultCodesEnum} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {PayloadType} from "../types/Types";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "./reduxStore";
+import {authAPI} from "../api/authAPI";
+import {securityAPI} from "../api/securityAPI";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'GET_CAPTCHA_URL_SUCCESS';
@@ -51,7 +53,7 @@ export const setAuthUserData = (id, email, login, isAuth): SetAuthUserDataAction
     type: SET_USER_DATA,
     payload: {id, email, login, isAuth}
 });
-export const getCaptchaUrlSuccess = (captchaUrl: string) => ({
+export const getCaptchaUrlSuccess = (captchaUrl: any) => ({
     type: GET_CAPTCHA_URL_SUCCESS,
     payload: captchaUrl
 });
@@ -66,14 +68,14 @@ export const getAuthUserData = (): ThunkType => async (dispatch: any) => {
 
 export const login = (email: string, password: string, rememberMe: boolean, isAuth: boolean, captcha: string): ThunkType => async (dispatch) => {
     const data = await authAPI.login(email, password, rememberMe, isAuth, captcha)
-    const messages = data.messages.length > 0 ? data.messages[0] : "Some error"
+    // const messages = data.message.length > 0 ? data.message[0] : "Some error"
     if (data.resultCode === ResultCodesEnum.Success) {
         dispatch(getAuthUserData())
     } else {
         if (data.resultCode === ResultCodeForCaptcha.CaptchaIsRequired) {
             dispatch(getCaptchaUrl())
         }
-        dispatch(stopSubmit("login", {_error: messages}))
+        // dispatch(stopSubmit("login", {_error: messages})) // вынуждену закаментил была ошибка
     }
 }
 
@@ -84,7 +86,7 @@ export const logout = (): ThunkType => async (dispatch) => {
     }
 }
 
-export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
+export const getCaptchaUrl = () => async (dispatch) => {
     const data = await securityAPI.getCaptcha()
     const captchaUrl = data.url
     dispatch(getCaptchaUrlSuccess(captchaUrl))

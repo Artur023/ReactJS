@@ -10,14 +10,14 @@ type ProfilePropsType = {
     status: string
     updateStatus: () => void
     saveProfile: () => void
-    store: any
+    store: any | null
 }
 
 const Profile: FC<ProfilePropsType> = props => {
     return (<div>
             <ProfileInfo isOwner={props.isOwner} savePhoto={props.savePhoto} profile={props.profile}
                          status={props.status} updateStatus={props.updateStatus} saveProfile={props.saveProfile}/>
-            <MyPostsContainer store={props.store}/>
+            <MyPostsContainer {...props.store}/>
         </div>
     );
 };

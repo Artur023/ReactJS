@@ -1,8 +1,8 @@
-import {usersAPI} from "../api/api";
 import {objectHelpers} from "../utils/objectHelpers";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType, InferActionsTypes} from "./reduxStore";
 import {Dispatch} from "redux";
+import {usersAPI} from "../api/usersAPI";
 
 type InitialStateType = {
     users: Array<object>

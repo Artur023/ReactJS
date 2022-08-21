@@ -1,8 +1,9 @@
-import {profileAPI, ResultCodesEnum} from "../api/api";
+import {ResultCodesEnum} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {PhotoType, PostType, ProfileType} from "../types/Types";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "./reduxStore";
+import {profileAPI} from "../api/profileAPI";
 
 const ADD_POST = 'ADD-POST';
 const DELETE_POST = 'DELETE-POST';
@@ -144,7 +145,7 @@ export const updateStatus = (status: null | string): ThunkType => async (dispatc
 export const savePhoto = (file): ThunkType => async (dispatch) => {
     let response = await profileAPI.savePhoto(file)
     if (response.resultCode === ResultCodesEnum.Success) {
-        dispatch(savePhotoSuccess(response.data.photos));
+        dispatch(savePhotoSuccess(response.data.photos)); // try problem photo
     }
 }
 
@@ -154,8 +155,8 @@ export const saveProfile = (profile): ThunkType => async (dispatch, getState) =>
     if (response.resultCode === ResultCodesEnum.Success) {
         dispatch(getProfileUser(userId));
     } else {
-        dispatch(stopSubmit("profileData", {_error: response.messages}))
-        return Promise.reject(response.messages[1])
+        dispatch(stopSubmit("profileData", {_error: response.message}))
+        return Promise.reject(response.message[1])
     }
 }
 export default profileReducer;
